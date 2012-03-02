@@ -3,8 +3,13 @@ TouchdownStats
 Module to extract and display landing rates from your PIREPS table
 
 Developed by:
-simpilot
+simpilot - David Clark
 www.simpilotgroup.com
+www.david-clark.net
+
+----------------------------------------------
+A visible link to http://www.simpilotgroup.com must be provided on any webpage utilizing this script for the license to be valid.
+----------------------------------------------
 
 Developed on:
 phpVMS 2.1.935
