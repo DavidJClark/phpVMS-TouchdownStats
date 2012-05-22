@@ -68,15 +68,17 @@ class TouchdownStatsData extends CodonData  {
         $stats = self::pilot_stats($pilotid);
         $total = 0;
         $count = 0;
-
-        foreach ($stats as $stat)
-            {
-            $total = $total + $stat->landingrate;
-            $count++;
+        if(!empty($stats))
+        {
+            foreach ($stats as $stat)
+                {
+                $total = $total + $stat->landingrate;
+                $count++;
+            }
+            return $total / $count;
         }
-        $average = $total / $count;
-
-        return $average;
+        else
+        {return '0';}
     }
 
     public function airline_average() {
