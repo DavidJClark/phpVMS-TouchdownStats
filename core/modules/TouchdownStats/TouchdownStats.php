@@ -17,6 +17,7 @@ class TouchdownStats extends CodonModule {
     }
 
     public function top_landings($howmany)  {
+        if(!is_numeric($howmany)){exit;}
         $this->set('stats', TouchdownStatsData::get_stats($howmany));
         $this->show('touchdownstats/touchdownstats_index.tpl');
     }
