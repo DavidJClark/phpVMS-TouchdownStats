@@ -11,7 +11,7 @@
 
 class TouchdownStatsData extends CodonData  {
 
-    public function get_all_stats() {
+    public static function get_all_stats() {
         $query = "SELECT pilotid, code, flightnum, depicao, arricao, aircraft, landingrate, submitdate FROM `".TABLE_PREFIX."pireps`
                     WHERE landingrate < '0'
                     ORDER BY landingrate DESC";
@@ -19,7 +19,7 @@ class TouchdownStatsData extends CodonData  {
         return DB::get_results($query);
     }
 
-     public function get_stats($howmany) {
+     public static function get_stats($howmany) {
         $query = "SELECT pilotid, code, flightnum, depicao, arricao, aircraft, landingrate, submitdate FROM `".TABLE_PREFIX."pireps`
                     WHERE landingrate < '0'
                     ORDER BY landingrate DESC
@@ -27,8 +27,8 @@ class TouchdownStatsData extends CodonData  {
 
         return DB::get_results($query);
     }
-    
-    public function get_airline_stats($airline) {
+
+    public static function get_airline_stats($airline) {
         $query = "SELECT * FROM `".TABLE_PREFIX."pireps`
                     WHERE landingrate < '0'
                     AND code = '$airline'
@@ -36,8 +36,8 @@ class TouchdownStatsData extends CodonData  {
 
         return DB::get_results($query);
     }
-    
-    public function get_worst_stats($howmany) {
+
+    public static function get_worst_stats($howmany) {
         $query = "SELECT pilotid, code, flightnum, depicao, arricao, aircraft, landingrate, submitdate FROM `".TABLE_PREFIX."pireps`
                     WHERE landingrate < '0'
                     ORDER BY landingrate ASC
@@ -45,17 +45,17 @@ class TouchdownStatsData extends CodonData  {
 
         return DB::get_results($query);
     }
-    
-    public function get_stats_by_aircraft($aircraftId) {
+
+    public static function get_stats_by_aircraft($aircraftId) {
     $query = "SELECT pilotid, code, flightnum, depicao, arricao, aircraft, landingrate, submitdate FROM `".TABLE_PREFIX."pireps`
-                WHERE landingrate < '0' 
-                AND aircraft = $aircraftId 
+                WHERE landingrate < '0'
+                AND aircraft = $aircraftId
                 ORDER BY landingrate DESC";
 
                 return DB::get_results($query);
     }
-    
-    public function pilot_stats($pilotid)   {
+
+    public static function pilot_stats($pilotid)   {
         $query = "SELECT pilotid, code, flightnum, depicao, arricao, aircraft, landingrate, submitdate FROM `".TABLE_PREFIX."pireps`
                     WHERE landingrate < '0'
                     AND pilotid = '$pilotid'
@@ -64,7 +64,7 @@ class TouchdownStatsData extends CodonData  {
         return DB::get_results($query);
     }
 
-    public function pilot_average($pilotid) {
+    public static function pilot_average($pilotid) {
         $stats = self::pilot_stats($pilotid);
         $total = 0;
         $count = 0;
@@ -81,7 +81,7 @@ class TouchdownStatsData extends CodonData  {
         {return '0';}
     }
 
-    public function airline_average() {
+    public static function airline_average() {
         $stats = self::get_all_stats();
         $total = 0;
         $count = 0;
